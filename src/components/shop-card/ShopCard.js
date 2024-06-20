@@ -1,25 +1,32 @@
 import React from 'react';
-import 'bootstrap/dist/css/bootstrap.min.css';
-import { Button } from "react-bootstrap";
+import { Card, Button } from "react-bootstrap";
 
 const ShopCard = (props) => {
-	const { card, isSelected, onClick } = props;
+    const addItem = () => {
+        props.getItem(props.card);
+        console.log(props.card);
+    }
+    const removeItem = () => {
+        props.removeItem(props.card);
+        console.log(props.card);
+    }
+    return (
+        <div className="mt-3 col-12 col-sm-6 col-md-4 col-xl-3">
+            <Card>
+                <Card.Img variant="top" src={"/assets/imgs/" + props.card.image} />
+                <Card.Body>
+                    <Card.Title>{props.card.title}</Card.Title>
+                    <Card.Subtitle>{props.card.description}</Card.Subtitle>
+                    <Card.Text>{props.card.price} UAH.</Card.Text>
+                </Card.Body>
+                <Card.Footer>
+                    <Button variant="success" onClick={addItem}>I want to buy it!</Button>
+                    <Button variant="danger" onClick={removeItem}>-</Button>
+                    <span> Selected {props.card.added}</span>
+                </Card.Footer>
+            </Card>
+        </div>
+    );
+};
 
-		return (
-			<div
-				className={`card ${isSelected ? 'selected' : ''}`} onClick={onClick}
-				style={isSelected ? { backgroundColor: '#f8d7da', borderColor: '#212F3C' } : {}}
-			>
-				<img src={card.image} className="card-img-top" alt={card.title} />
-
-				<div className="card-body">
-					<h5 className="card-title">{card.title}</h5>
-					<p className="card-text">{card.description}</p>
-					{isSelected && <div className="selected-indicator">About this book</div>}
-					<Button variant="success" onClick={onClick}>I want to buy it!</Button>
-				</div>
-			</div>
-		);
-	}
-
-	export default ShopCard;
+export default ShopCard;
