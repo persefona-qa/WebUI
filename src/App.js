@@ -5,10 +5,7 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 import Menu from "./components/menu/Menu";
 import ShopCard from "./components/shop-card/ShopCard";
-import { Switch, Route } from "react-router-dom";
-import BinComponent from "./components/bin-component/bin-component";
-import AboutComponent from "./components/about-component/about-component";
-import ListComponents from "./components/list-component/list-components";
+
 
 // Importing images from assets directory
 import stephenKingImage from './assets/1.png';
@@ -42,11 +39,6 @@ function App() {
                     <Menu />
                 </header>
 
-            <Switch>
-                <Route path="/bin" component={BinComponent} />
-                <Route path="/about" component={AboutComponent} />
-                <Route path="/" component={ListComponents} />
-            </Switch>
         </section>
  );
 
