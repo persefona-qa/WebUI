@@ -1,33 +1,37 @@
 import React, { useState } from 'react';
 import ShopCard from '../shop-card/ShopCard'; // Adjust the import path as per your project structure
 
+import stephenKingImage from './assets/1.png';
+import jkRowlingImage from './assets/2.png';
+import tessGerritsenImage from './assets/3.png';
+import georgeRRMartinImage from './assets/4.png';
+import clashOfKingsImage from './assets/5.png';
+import janeEyreImage from './assets/6.png'
+
 const ListComponents = () => {
     const books = [
-        { id: 1, title: "Stephen King", description: "Shining", price: 100, image: "stephenKingImage.jpg", added: 0 },
-        { id: 2, title: "J.K Rowling", description: "Harry Potter and Half-Blood Prince", price: 289, image: "jkRowlingImage.jpg", added: 0 },
-        { id: 3, title: "Tess Gerritsen", description: "The Surgeon", price: 199, image: "tessGerritsenImage.jpg", added: 0 },
-        { id: 4, title: "George R.R. Martin", description: "A Game of Thrones", price: 350, image: "georgeRRMartinImage.jpg", added: 0 },
-        { id: 5, title: "George R.R. Martin", description: "A Clash of Kings", price: 350, image: "clashOfKingsImage.jpg", added: 0 },
-        { id: 6, title: "Charlotte Brontë", description: "Jane Eyre", price: 200, image: "janeEyreImage.jpg", added: 0 }
+        { id: 1, title: "Stephen King", description: "Shining", price: 100, image: stephenKingImage, added: 0 },
+        { id: 2, title: "J.K Rowling", description: "Harry Potter and Half-Blood Prince", price: 289, image: jkRowlingImage, added: 0 },
+        { id: 3, title: "Tess Gerritsen", description: "The Surgeon", price: 199, image: tessGerritsenImage, added: 0 },
+        { id: 4, title: "George R.R. Martin", description: "A Game of Thrones", price: 350, image: georgeRRMartinImage, added: 0 },
+        { id: 5, title: "George R.R. Martin", description: "A Clash of Kings", price: 350, image: clashOfKingsImage, added: 0 },
+        { id: 6, title: "Charlotte Brontë", description: "Jane Eyre", price: 200, image: janeEyreImage, added: 0 }
     ];
 
     const [totalItems, setTotalItems] = useState([]);
 
     const totalPriceClick = (item) => {
-        const updatedBooks = books.map(book => {
-            if (book.id === item.id) {
-                return { ...book, added: book.added + 1 };
+        console.log("totalPriceClick", books);
+        books.forEach((itemF, indexF) => {
+            if (itemF.id === item.id) {
+                books[indexF].added++;
             }
-            return book;
         });
-
         setTotalItems([...totalItems, item]);
-    };
-
+    }
     const removeItem = (item) => {
         console.log("removeItem", item);
-        // Logic to remove item from totalItems and decrement 'added' in books
-    };
+    }
 
     return (
         <main>
@@ -40,14 +44,15 @@ const ListComponents = () => {
             </section>
             <section className="container">
                 <div className="row">
-                    {books.map(item => (
+                    {books.map(item => {
+                        return (
                         <ShopCard
                             card={item}
                             key={item.id}
                             getItem={totalPriceClick}
                             removeItem={removeItem}
                         />
-                    ))}
+                        ) })}
                 </div>
             </section>
         </main>

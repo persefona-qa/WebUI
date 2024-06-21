@@ -5,7 +5,7 @@ const Menu = () => {
     return (
         <Navbar bg="light" variant="light" expand="lg">
             <Container>
-                <Navbar.Brand id="navbar-brand" href="#home">Bookshop</Navbar.Brand>
+                <Navbar.Brand id="n01" href="#home">Bookshop</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
                 <Navbar.Collapse id="basic-navbar-nav">
                     <Nav className="me-auto">
@@ -13,7 +13,7 @@ const Menu = () => {
                         <Nav.Link href="/bin">Bin</Nav.Link>
                         <Nav.Link href="/about">About</Nav.Link>
                     </Nav>
-                    <Navbar.Text id="navbar-text">
+                    <Navbar.Text id="n02">
                         Signed in as: <a href="#login">Natali</a>
                     </Navbar.Text>
                 </Navbar.Collapse>

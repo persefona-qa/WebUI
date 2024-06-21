@@ -13,7 +13,7 @@ const ShopCard = (props) => {
     return (
         <div className="mt-3 col-12 col-sm-6 col-md-4 col-xl-3">
             <Card>
-                <Card.Img variant="top" src={"/assets/imgs/" + props.card.image} />
+                <Card.Img variant="top" src={props.card.image} />
                 <Card.Body>
                     <Card.Title>{props.card.title}</Card.Title>
                     <Card.Subtitle>{props.card.description}</Card.Subtitle>
