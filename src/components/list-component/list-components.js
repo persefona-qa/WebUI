@@ -67,28 +67,28 @@ export default ListComponents;
 // list-components.js
 import React, { useState, useEffect } from 'react';
 import ShopCard from '../shop-card/ShopCard';
+import BasketComponent from '../basket-component/BasketComponent';
 import { LOCALSTORE_TOTALITEMS } from '../../constant/constants';
-
 
 import stephenKingImage from './assets/1.png';
 import jkRowlingImage from './assets/2.png';
 import tessGerritsenImage from './assets/3.png';
 import georgeRRMartinImage from './assets/4.png';
 import clashOfKingsImage from './assets/5.png';
-import janeEyreImage from './assets/6.png'
+import janeEyreImage from './assets/6.png';
 
 const ListComponents = () => {
     const [totalItems, setTotalItems] = useState([]);
 
     useEffect(() => {
+        const getLocalStore = () => {
+            let totalItemsLocal = window.localStorage.getItem(LOCALSTORE_TOTALITEMS);
+            totalItemsLocal = totalItemsLocal ? JSON.parse(totalItemsLocal) : [];
+            setTotalItems(totalItemsLocal);
+        };
+
         getLocalStore();
     }, []);
-
-    const getLocalStore = () => {
-        let totalItemsLocal = window.localStorage.getItem(LOCALSTORE_TOTALITEMS);
-        totalItemsLocal = totalItemsLocal ? JSON.parse(totalItemsLocal) : [];
-        setTotalItems(totalItemsLocal);
-    };
 
     const totalPriceClick = (item) => {
         const updatedItems = [...totalItems, item];
@@ -130,6 +130,13 @@ const ListComponents = () => {
                             removeItem={removeItem}
                         />
                     ))}
+                </div>
+            </section>
+            <section className="container">
+                <div className="row">
+                    <div className="col-12">
+                        <BasketComponent totalItems={totalItems} />
+                    </div>
                 </div>
             </section>
         </main>
